@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>验证码-demo2</title>
+  <style>
+  .p1 {
+    width: 100px;
+    height: 30px;
+    border: 1px solid black;
+  }
+
+  </style>
+  <script>
+  //封装函数（随机颜色）
+  function randomColor() {
+    var r = parseInt(Math.random() * 256);
+    var g = parseInt(Math.random() * 256);
+    var b = parseInt(Math.random() * 256);
+    var rgb = "rgb(" + r + "," + g + "," + b + ")";
+    return rgb;
+  }
+
+  //定义随机字符串
+  var array = "1234567890ABCDEFGHIGKLMNOPQRSTUVWXYZabcdefghigklmnopqrstuvwsyz";
+
+  //获取到span标签
+  var span = document.getElementsByTagName('span');
+
+  //定义一个函数
+  function sj() {
+    var code = '';
+
+    //进行for循环
+    for (var i = 0; i <= 6; i++) {
+
+      //首先随机数组的长度
+      var zm = parseInt(Math.random() * array.length);
+
+      //然后取出随机数组中的真正的值
+
+      code = array[zm];
+      // console.log(code);
+      //将上面取到的<span>元素通过innerHTML赋值给code
+      span[i].innerHTML = code;
+
+      //最后随机出的值通过style.color赋予随机颜色,这里我用到了一个封装函数randomColor()
+
+      span[i].style.color = randomColor();
+
+    }
+  }
+
+
+  </script>
+</head>
+
+<body onload="sj()">
+  <input class="p1">
+  <p style="font-size:30px;">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </p>
+  </input>
+  <!-- 通过onlick（点击事件）触发函数 -->
+  <button style="width:80px;height:30px;" onclick="sj()">换一波</button>
+</body>
+
+</html>
